@@ -12,7 +12,8 @@ function validAnagrams(str1, str2) {
   console.log(counts);
 
   for (let c of str2) {
-    counts[c] = (counts[c] || 0) - 1;
+    if (!counts[c]) return false;
+    counts[c]--;
     if (counts[c] === 0) delete counts[c];
   }
 
