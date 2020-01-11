@@ -1,4 +1,8 @@
+// check if 2 strings are anagrams via a Frequency Counter
 function validAnagrams(str1, str2) {
+
+  if (str1.length !== str2.length) return false;
+
   const counts = {};
 
   for (let c of str1) {
