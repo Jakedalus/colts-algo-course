@@ -14,12 +14,14 @@ function validAnagrams(str1, str2) {
   for (let c of str2) {
     if (!counts[c]) return false;
     counts[c]--;
-    if (counts[c] === 0) delete counts[c];
+    // if (counts[c] === 0) delete counts[c];
   }
 
   console.log(counts);
 
-  return Object.keys(counts).length === 0;
+  return true;
+
+  // return Object.keys(counts).length === 0;
 
 }
 
