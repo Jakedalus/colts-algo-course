@@ -5,7 +5,8 @@ function countUniqueValues(arr) {
 
   let uniqueValues = 1;
 
-  for(let i = 0; i < arr.length; i++) {
+  // for(let i = 0; i < arr.length; i++) {
+    let i = 0;
     for(let j = 1; j < arr.length; j++) {
       console.log('------------');
       console.log(`${i}, ${j}`);
@@ -15,7 +16,7 @@ function countUniqueValues(arr) {
         i = j;
       }
     }
-  }
+  // }
 
   return uniqueValues;
 
