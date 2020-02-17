@@ -1,7 +1,14 @@
 // Frequency Counter version
 function areThereDuplicatesFC() {
 
-  
+  const counts = {};
+
+  for (let a of arguments) {
+    counts[a] = counts[a] ? counts[a] + 1 : 1;
+    if (counts[a] > 1) return true
+  }
+
+  return false;
 
 }
 
@@ -10,10 +17,20 @@ console.log(areThereDuplicatesFC(1, 2, 2)); // true
 console.log(areThereDuplicatesFC('a', 'b', 'c', 'a')); // true
 
 
-// Multiple Pointes version
+// Multiple Pointers version
 function areThereDuplicatesMP() {
 
-  
+  let args = Array.from(arguments).sort();  // Array MUST be sorted for multiple pointers to work
+
+  let i = 0;
+
+  for (var j = 1; j < args.length; j++) {
+    // console.log(`${i}: ${args[i]}, ${j}: ${args[j]}`);
+    if (args[i] === args[j]) return true;
+    i = j;
+  }
+
+  return false;
 
 }
 
