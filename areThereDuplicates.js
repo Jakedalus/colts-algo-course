@@ -3,7 +3,9 @@ function areThereDuplicatesFC() {
 
   const counts = {};
 
-  for (let a of arguments) {
+  let args = Array.from(arguments)
+
+  for (let a of args) {
     counts[a] = counts[a] ? counts[a] + 1 : 1;
     if (counts[a] > 1) return true
   }
