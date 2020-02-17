@@ -69,6 +69,10 @@ function areThereDuplicates2(...args) {
   return false
 }
 
+function areThereDuplicatesOneLine() {
+  return new Set(arguments).size !== arguments.length;
+}
+
 
 
 
