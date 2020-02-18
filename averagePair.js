@@ -1,7 +1,20 @@
-function averagePair(){
+function averagePair(arr, avg){
   
-  
+  let start = 0, end = arr.length-1;
 
+  while (start < end) {
+    let temp = (arr[start] + arr[end]) / 2;
+    // console.log(start, end, temp);
+    if (temp === avg) {
+      return true;
+    } else if (temp < avg) {
+      start++;
+    } else {
+      end--;
+    }
+  }
+  
+  return false;
 }
 
 
