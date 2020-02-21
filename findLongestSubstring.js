@@ -20,7 +20,6 @@ function findLongestSubstring(str){
       
     } else {
       // console.log(c, ' is in memory.');
-      // start = memory[c];
       start = tempSub.indexOf(c);
       // console.log('Splitting tempSub, ', tempSub, ' at ', start);
       let removed = tempSub.substring(0, start + 1);
