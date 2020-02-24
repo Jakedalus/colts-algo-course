@@ -15,7 +15,7 @@ console.log(fib(35)); // 9227465
 
 
 // fib(5)
-//   fib(4)                           +             fib(3)
-//     fib(3)                 +     fib(2)             fib(2) + fib(1)
-//       fib(2) + fib(1)              1                   1       1
+//   fib(4)                  +                    fib(3)
+//     fib(3)          +        fib(2)             fib(2) + fib(1)
+//       fib(2) + fib(1)          1                   1       1
 //          1       1
