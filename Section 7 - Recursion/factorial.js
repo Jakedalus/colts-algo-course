@@ -17,7 +17,7 @@ console.log(factorialIteration(15));
 
 function factorialRecursion(num) {
 
-  if (num <= 1) return 1;
+  if (num === 1) return 1;
 
   return num * factorialRecursion(num - 1);
   
