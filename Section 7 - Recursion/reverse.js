@@ -20,3 +20,12 @@ function reverse(str) {
 console.log(reverse('awesome')); // emosewa
 console.log(reverse('jacobcarpenter')); // retnepracbocaj
 
+
+function pureReverse(str){
+  if(str.length <= 1) return str;
+  return reverse(str.slice(1)) + str[0];
+}
+
+console.log(pureReverse('awesome')); // emosewa
+console.log(pureReverse('jacobcarpenter')); // retnepracbocaj
+
