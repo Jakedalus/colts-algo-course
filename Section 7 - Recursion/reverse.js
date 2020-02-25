@@ -1,3 +1,4 @@
+// Helper function
 function reverse(str) {
 
   let reversedStr = '';
