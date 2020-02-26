@@ -24,7 +24,7 @@ function stringifyNumbers(obj) {
 
   stringifier(obj);
 
-  console.log(obj);
+  // console.log('obj:', obj);
 
   return tempObj;
 
@@ -46,7 +46,7 @@ let obj = {
 };
 
 
-console.log(stringifyNumbers(obj));
+console.log(stringifyNumbers(obj), obj);
 
 
 // {
@@ -60,3 +60,40 @@ console.log(stringifyNumbers(obj));
 //         }
 //     }
 // }
+
+function stringifyNumbersColt(obj) {
+  // console.log(obj);
+  var newObj = {};
+  for (var key in obj) {
+    if (typeof obj[key] === 'number') {
+      newObj[key] = obj[key].toString();
+    } else if (typeof obj[key] === 'object' && !Array.isArray(obj[key])) {
+      newObj[key] = stringifyNumbers(obj[key]);
+    } else {
+      newObj[key] = obj[key];
+    }
+  }
+
+  // console.log(newObj);
+  return newObj;
+}
+
+let obj2 = {
+    num: 1,
+    test: [],
+    data: {
+        val: 4,
+        info: {
+            isRight: true,
+            random: 66
+        }
+    }
+};
+
+console.log(stringifyNumbersColt(obj), obj);
+
+
+
+
+
+
