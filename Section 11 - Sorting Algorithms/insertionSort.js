@@ -4,10 +4,9 @@ function insertionSort(arr) {
     let current = arr[i];
     for (let j = i - 1; j >= 0; j--) {
       if (arr[j] <= current) break; // necessary for optimization 
-      
+      console.log(arr);
       // console.log(j, j+1);
       if (arr[j+1] < arr[j]) [arr[j+1], arr[j]] = [arr[j], arr[j+1]];
-      console.log(arr);
     }
     // console.log(arr);
   }
@@ -28,13 +27,32 @@ console.log(insertionSort([5,3,2,1,-1]));
 
 console.log('------');
 
+function whileInsertionSort(arr) {
+  for (let i = 0; i < arr.length; i++) {
+    let current = arr[i];
+    let j = i - 1;
+    while (j >= 0 && arr[j] > current) {
+      console.log(arr);
+      arr[j+1] = arr[j];
+      j--;
+    }
+    arr[j+1] = current;
+  }
+
+  return arr;
+}
+
+console.log(whileInsertionSort([5,3,2,1,-1]));
+
+console.log('------');
+
 function coltsInsertionSort(arr) {
   for(let i = 1; i < arr.length; i++) {
     let currentVal = arr[i];
     let j = i - 1;
     for ( ;j >= 0 && arr[j] > currentVal; j--) {
-      arr[j+1] = arr[j];
       console.log(arr);
+      arr[j+1] = arr[j];
     }
     arr[j+1] = currentVal;
     // console.log(arr);
