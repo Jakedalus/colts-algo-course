@@ -13,12 +13,14 @@ function merge(arr1, arr2) {
     }
   }
 
-  for (; i < arr1.length; i++) {
+  while (i < arr1.length) {
     merged.push(arr1[i]);
+    i++;
   }
 
-  for (; j < arr2.length; j++) {
+  while (j < arr2.length) {
     merged.push(arr2[j]);
+    j++;
   }
 
   return merged;
