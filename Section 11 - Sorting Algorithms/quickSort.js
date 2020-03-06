@@ -2,7 +2,7 @@ function partition(arr, start, end) {
 
   let pivot = arr[start], pivotIndex = start;
 
-  for (let i = start + 1; i < end; i++) {
+  for (let i = start + 1; i <= end; i++) {
     if (arr[i] < pivot) {
       pivotIndex++;
       [arr[i], arr[pivotIndex]] = [arr[pivotIndex], arr[i]];
@@ -35,12 +35,12 @@ function quickSortContainer(arr) {
 
     // console.log("pivot:", pivot);
 
-    quickSort(arr, start, pivot);
+    quickSort(arr, start, pivot - 1);
     quickSort(arr, pivot + 1, end);
 
   }
 
-  quickSort(arr, 0, arr.length);
+  quickSort(arr, 0, arr.length-1);
 
   return arr;
 
@@ -50,4 +50,27 @@ console.log(quickSortContainer([5,2,64,-12,52]));
 console.log(quickSortContainer([4,6,1,2,5,8,3,7]));
 console.log(quickSortContainer([8,6,1,2,5,4,3,7]));
 console.log(quickSortContainer([1,6,8,2,5,4,3,7]));
+console.log(quickSortContainer([4,16,-21,2,-5,1,1,8,3,7,22,-5]));
+
+
+
+function quickSortColt(arr, left = 0, right = arr.length - 1) {
+
+  if (left < right) {
+    let pivotIndex = partition(arr, left, right);
+    quickSortColt(arr,left,pivotIndex - 1);
+    quickSortColt(arr,pivotIndex + 1, right);
+  }  
+
+  return arr;
+
+}
+
+console.log(quickSortColt([5,2,64,-12,52]));
+console.log(quickSortColt([4,6,1,2,5,8,3,7]));
+console.log(quickSortColt([8,6,1,2,5,4,3,7]));
+console.log(quickSortColt([1,6,8,2,5,4,3,7]));
+console.log(quickSortColt([4,16,-21,2,-5,1,1,8,3,7,22,-5]));
+
+
 
