@@ -18,6 +18,13 @@ function partition(arr, start, end) {
 
 }
 
+function randomize(arr, start, end) {
+  let random = Math.floor(Math.random() * (end - start) + start);
+  // console.log(random);
+  [arr[start], arr[random]] = [arr[random], arr[start]];
+  return partition(arr, start, end);
+}
+
 // console.log(partition([5,2,64,-12,52], 0));
 // console.log(partition([4,6,1,2,5,8,3,7], 0));
 // console.log(partition([8,6,1,2,5,4,3,7], 0));
@@ -31,7 +38,8 @@ function quickSortContainer(arr) {
     // console.log('start:', start, 'end:', end);
     if (end <= start) return;
 
-    let pivot = partition(arr, start, end);
+    // let pivot = partition(arr, start, end);
+    let pivot = randomize(arr, start, end);
 
     // console.log("pivot:", pivot);
 
@@ -51,8 +59,10 @@ console.log(quickSortContainer([4,6,1,2,5,8,3,7]));
 console.log(quickSortContainer([8,6,1,2,5,4,3,7]));
 console.log(quickSortContainer([1,6,8,2,5,4,3,7]));
 console.log(quickSortContainer([4,16,-21,2,-5,1,1,8,3,7,22,-5]));
+console.log(quickSortContainer([1,2,4,5,6,7,9,11,34,66,88,10102]));
 
 
+console.log('-----');
 
 function quickSortColt(arr, left = 0, right = arr.length - 1) {
 
@@ -71,6 +81,7 @@ console.log(quickSortColt([4,6,1,2,5,8,3,7]));
 console.log(quickSortColt([8,6,1,2,5,4,3,7]));
 console.log(quickSortColt([1,6,8,2,5,4,3,7]));
 console.log(quickSortColt([4,16,-21,2,-5,1,1,8,3,7,22,-5]));
+console.log(quickSortColt([1,2,4,5,6,7,9,11,34,66,88,10102]));
 
 
 
