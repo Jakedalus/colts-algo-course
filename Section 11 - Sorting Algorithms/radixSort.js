@@ -41,6 +41,9 @@ function mostDigits(nums) {
 // console.log(mostDigits([23,123,52342,1,90,0]));
 // console.log(mostDigits([23,123,23,1,90,0]));
 
+
+// Time Complexity Best/Average/Worst: O(nk)
+// Space Complexity: O(n + k)
 function radixSort(nums) {
 
   const maxDigits = mostDigits(nums);
