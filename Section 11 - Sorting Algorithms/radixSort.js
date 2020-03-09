@@ -18,7 +18,7 @@ console.log(digitCount(32));
 console.log(digitCount(334));
 console.log(digitCount(0));
 
-function mostDigits(nums) {
+function myMostDigits(nums) {
 
   let max = 0;
   for (let n of nums) {
@@ -27,6 +27,15 @@ function mostDigits(nums) {
   }
 
   return max;
+}
+
+function mostDigits(nums) {
+  let maxDigits = 0;
+  for (let n of nums) {
+    maxDigits = Math.max(maxDigits, digitCount(n));
+  }
+
+  return maxDigits;
 }
 
 console.log(mostDigits([23,123,52342,1,90,0]));
