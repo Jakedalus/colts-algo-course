@@ -66,7 +66,7 @@ function radixSort(nums) {
 
 console.log(radixSort([23,123,52342,1,90,0]));
 console.log(radixSort([23,123,23,1,90,0]));
-console.log(radixSort([1090,-13,4523,37,1,0,-10]));
+console.log(radixSort([1090,13,4523,37,1,0,10]));
 
 
 
