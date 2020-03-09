@@ -16,6 +16,18 @@ function digitCount(num) {
 console.log(digitCount(3));
 console.log(digitCount(32));
 console.log(digitCount(334));
-console.log(digitCount());
 console.log(digitCount(0));
 
+function mostDigits(nums) {
+
+  let max = 0;
+  for (let n of nums) {
+    let temp = digitCount(n);
+    if (temp > max) max = temp
+  }
+
+  return max;
+}
+
+console.log(mostDigits([23,123,52342,1,90,0]));
+console.log(mostDigits([23,123,23,1,90,0]));
