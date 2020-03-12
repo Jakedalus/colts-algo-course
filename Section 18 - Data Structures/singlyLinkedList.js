@@ -39,16 +39,22 @@ class SinglyLinkedList {
     if (this.length === 0) return undefined;
 
     let pre = this.head;
-    let temp = this.head.next;
-    while(temp.next) {
-      pre = temp;
-      temp = temp.next;
+    let current = this.head;
+    while(current.next) {
+      pre = current;
+      current = current.next;
     }
 
     pre.next = null;
     this.tail = pre;
     this.length--;
-    return temp;
+
+    if (this.length === 0) {
+      this.head = null;
+      this.tail = null;
+    }
+
+    return current;
   }
 
 }
@@ -63,6 +69,13 @@ console.log(list.head.next);
 console.log(list.pop());
 console.log(list);
 
+console.log('-----');
+let list2 = new SinglyLinkedList();
+console.log(list2.push('sup'));
+console.log(list2.pop());
+console.log(list2);
+console.log(list2.pop());
+console.log(list2);
 
 
 
