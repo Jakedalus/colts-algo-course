@@ -23,13 +23,16 @@ class SinglyLinkedList {
 
   push(val) {
     let newNode = new Node(val);
-    if (this.head === null) {
+    if (!this.head) {
       this.head = newNode;
-      this.tail = newNode;
+      this.tail = this.head;
     } else {
       this.tail.next = newNode;
       this.tail = newNode;
     }
+    this.length++;
+
+    return this;
   }
 
 }
@@ -37,10 +40,10 @@ class SinglyLinkedList {
 
 
 let list = new SinglyLinkedList();
-list.push('hello!');
-list.push('middle node!');
-list.push('goodbye!');
-console.log(list);
+console.log(list.push('hello!'));
+console.log(list.push('middle node!'));
+console.log(list.push('goodbye!'));
+console.log(list.head.next);
 
 
 
