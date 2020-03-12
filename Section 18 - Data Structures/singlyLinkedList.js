@@ -35,6 +35,22 @@ class SinglyLinkedList {
     return this;
   }
 
+  pop() {
+    if (this.length === 0) return undefined;
+
+    let pre = this.head;
+    let temp = this.head.next;
+    while(temp.next) {
+      pre = temp;
+      temp = temp.next;
+    }
+
+    pre.next = null;
+    this.tail = pre;
+    this.length--;
+    return temp;
+  }
+
 }
 
 
@@ -44,6 +60,8 @@ console.log(list.push('hello!'));
 console.log(list.push('middle node!'));
 console.log(list.push('goodbye!'));
 console.log(list.head.next);
+console.log(list.pop());
+console.log(list);
 
 
 
