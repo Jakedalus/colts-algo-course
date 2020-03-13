@@ -57,6 +57,20 @@ class SinglyLinkedList {
     return current;
   }
 
+  shift() {
+    if (this.length === 0) return undefined;
+
+    let temp = this.head;
+    this.head = temp.next;
+    this.length--;
+
+    if (this.length === 0) {
+      this.tail = null;
+    }
+
+    return temp;
+  }
+
 }
 
 
@@ -66,16 +80,20 @@ console.log(list.push('hello!'));
 console.log(list.push('middle node!'));
 console.log(list.push('goodbye!'));
 console.log(list.head.next);
-console.log(list.pop());
+console.log('pop:', list.pop());
+console.log(list);
+console.log('shift:', list.shift());
+console.log(list);
+console.log('shift:', list.shift());
 console.log(list);
 
 console.log('-----');
 let list2 = new SinglyLinkedList();
-console.log(list2.push('sup'));
-console.log(list2.pop());
-console.log(list2);
-console.log(list2.pop());
-console.log(list2);
+// console.log(list2.push('sup'));
+// console.log(list2.pop());
+// console.log(list2);
+// console.log(list2.pop());
+// console.log(list2);
 
 
 
