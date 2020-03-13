@@ -84,7 +84,7 @@ class SinglyLinkedList {
   }
 
   get(index) {
-    if (index < 0 || index > this.length) return null;
+    if (index < 0 || index >= this.length) return null;
     let currentIndex = 0;
     let currentNode = this.head;
     while (currentIndex < index ) {
@@ -114,6 +114,7 @@ console.log('unshift:', list.unshift('new head!'));
 console.log('unshift:', list.unshift('second new head!'));
 console.log('get:', list.get(0));
 console.log('get:', list.get(1));
+console.log(list);
 console.log('get:', list.get(2));
 console.log('get:', list.get(3));
 
