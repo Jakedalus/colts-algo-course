@@ -95,6 +95,15 @@ class SinglyLinkedList {
     return currentNode;
   }
 
+  set(val, index) {
+    let found = this.get(index);
+    if (found) {
+      found.val = val;
+    } 
+
+    return !!found;
+  }
+
 }
 
 
@@ -117,6 +126,11 @@ console.log('get:', list.get(1));
 console.log(list);
 console.log('get:', list.get(2));
 console.log('get:', list.get(3));
+console.log('set:', list.set('this will not work', 3));
+console.log(list);
+console.log('set:', list.set('changeinggg', 1));
+console.log(list);
+
 
 
 console.log('-----');
