@@ -104,6 +104,22 @@ class SinglyLinkedList {
     return !!found;
   }
 
+  insert(val, index) {
+    if (index < 0 || index > this.length) return false;
+    
+    let newNode = new Node(val);
+
+    if (index === this.length) return !!this.push(val);
+    if (index === 0) return !!this.unshift(val);
+
+    let pre = this.get(index - 1);
+    newNode.next = pre.next;
+    pre.next = newNode;
+    this.length++;
+
+    return true;
+  }
+
 }
 
 
@@ -130,6 +146,17 @@ console.log('set:', list.set('this will not work', 3));
 console.log(list);
 console.log('set:', list.set('changeinggg', 1));
 console.log(list);
+console.log('insert:', list.insert('first', 0));
+console.log(list);
+console.log('insert:', list.insert('last', 3));
+console.log(list);
+console.log('insert:', list.insert('middle', 3));
+console.log(list);
+console.log(list.get(0));
+console.log(list.get(1));
+console.log(list.get(2));
+console.log(list.get(3));
+console.log(list.get(4));
 
 
 
