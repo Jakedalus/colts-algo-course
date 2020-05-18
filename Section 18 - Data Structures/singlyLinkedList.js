@@ -218,8 +218,9 @@ console.log(list);
 console.log("-----");
 list.insert("first", 0);
 list.insert("last", 3);
+console.log(list);
 console.log(list.print());
-list.reverse();
+console.log(list.reverse());
 console.log(list.print());
 
 console.log("-----");
