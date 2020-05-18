@@ -153,6 +153,8 @@ class SinglyLinkedList {
       prev = current;
       current = next;
     }
+
+    return this;
   }
 }
 
