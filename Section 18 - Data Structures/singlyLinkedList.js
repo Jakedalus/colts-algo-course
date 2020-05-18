@@ -1,16 +1,14 @@
-
-
 class Node {
-  constructor(val){
+  constructor(val) {
     this.val = val;
     this.next = null;
   }
 }
 
-let first = new Node('hi');
-first.next = new Node('hello there');
-first.next.next = new Node('another one');
-first.next.next.next = new Node('how are you');
+let first = new Node("hi");
+first.next = new Node("hello there");
+first.next.next = new Node("another one");
+first.next.next.next = new Node("how are you");
 
 // console.log(first);
 
@@ -40,7 +38,7 @@ class SinglyLinkedList {
 
     let pre = this.head;
     let current = this.head;
-    while(current.next) {
+    while (current.next) {
       pre = current;
       current = current.next;
     }
@@ -87,7 +85,7 @@ class SinglyLinkedList {
     if (index < 0 || index >= this.length) return null;
     let currentIndex = 0;
     let currentNode = this.head;
-    while (currentIndex < index ) {
+    while (currentIndex < index) {
       currentNode = currentNode.next;
       currentIndex++;
     }
@@ -99,7 +97,7 @@ class SinglyLinkedList {
     let found = this.get(index);
     if (found) {
       found.val = val;
-    } 
+    }
 
     return !!found;
   }
@@ -124,64 +122,61 @@ class SinglyLinkedList {
     if (index === 0) return this.shift();
 
     let pre = this.get(index - 1);
-    let removed = this.get(index);
+    let removed = pre.next;
     pre.next = removed.next;
+    this.length--;
 
     return removed;
   }
-
 }
-
-
 
 let list = new SinglyLinkedList();
 
-
-console.log(list.push('hello!'));
-console.log(list.push('middle node!'));
-console.log(list.push('goodbye!'));
+console.log(list.push("hello!"));
+console.log(list.push("middle node!"));
+console.log(list.push("goodbye!"));
 console.log(list.head.next);
-console.log('-----');
+console.log("-----");
 
-console.log('pop:', list.pop());
+console.log("pop:", list.pop());
 console.log(list);
-console.log('-----');
+console.log("-----");
 
-console.log('shift:', list.shift());
+console.log("shift:", list.shift());
 console.log(list);
-console.log('shift:', list.shift());
+console.log("shift:", list.shift());
 console.log(list);
-console.log('-----');
+console.log("-----");
 
-console.log('unshift:', list.unshift('new head!'));
-console.log('unshift:', list.unshift('second new head!'));
-console.log('-----');
+console.log("unshift:", list.unshift("new head!"));
+console.log("unshift:", list.unshift("second new head!"));
+console.log("-----");
 
-console.log('get:', list.get(0));
-console.log('get:', list.get(1));
+console.log("get:", list.get(0));
+console.log("get:", list.get(1));
 console.log(list);
-console.log('get:', list.get(2));
-console.log('get:', list.get(3));
-console.log('-----');
+console.log("get:", list.get(2));
+console.log("get:", list.get(3));
+console.log("-----");
 
-console.log('set:', list.set('this will not work', 3));
+console.log("set:", list.set("this will not work", 3));
 console.log(list);
-console.log('set:', list.set('changeinggg', 1));
+console.log("set:", list.set("changeinggg", 1));
 console.log(list);
-console.log('-----');
+console.log("-----");
 
-console.log('insert:', list.insert('first', 0));
+console.log("insert:", list.insert("first", 0));
 console.log(list);
-console.log('insert:', list.insert('last', 3));
+console.log("insert:", list.insert("last", 3));
 console.log(list);
-console.log('insert:', list.insert('middle', 3));
+console.log("insert:", list.insert("middle", 3));
 console.log(list);
 console.log(list.get(0));
 console.log(list.get(1));
 console.log(list.get(2));
 console.log(list.get(3));
 console.log(list.get(4));
-console.log('-----');
+console.log("-----");
 
 console.log(list.remove(0));
 console.log(list.get(0));
@@ -192,18 +187,12 @@ console.log(list);
 console.log(list.remove(1));
 console.log(list.get(1));
 console.log(list);
-console.log('-----');
+console.log("-----");
 
-
-console.log('-----');
+console.log("-----");
 let list2 = new SinglyLinkedList();
 // console.log(list2.push('sup'));
 // console.log(list2.pop());
 // console.log(list2);
 // console.log(list2.pop());
 // console.log(list2);
-
-
-
-
-
