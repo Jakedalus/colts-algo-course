@@ -62,6 +62,22 @@ class DoublyLinkedList {
 
     return oldHead;
   }
+
+  unshift(val) {
+    const newNode = new Node(val);
+
+    if (this.length === 0) {
+      this.head = newNode;
+      this.tail = newNode;
+    } else {
+      this.head.prev = newNode;
+      newNode.next = this.head;
+      this.head = newNode;
+    }
+    this.length++;
+
+    return this;
+  }
 }
 
 console.log("========");
@@ -96,3 +112,10 @@ console.log("Shift nodes off list");
 console.log("--------");
 console.log(list.shift());
 console.log(list);
+
+console.log();
+console.log("========");
+console.log("Unshift nodes onto list");
+console.log("--------");
+console.log(list.unshift("unshfited node"));
+console.log(list.unshift("unshfited node #two"));
