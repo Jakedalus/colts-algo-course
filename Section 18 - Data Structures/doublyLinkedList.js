@@ -97,6 +97,17 @@ class DoublyLinkedList {
     }
     return current;
   }
+
+  set(index, val) {
+    let node = this.get(index);
+
+    if (node) {
+      node.val = val;
+      return true;
+    }
+
+    return false;
+  }
 }
 
 console.log("========");
@@ -150,3 +161,14 @@ console.log(list.get(2));
 console.log(list.get(3));
 console.log(list.get(4));
 console.log(list.get(100));
+
+console.log();
+console.log("========");
+console.log("Set node at index");
+console.log("--------");
+console.log(list.set(0, "SETTING THE HEAD!!"));
+console.log(list);
+console.log(list.set(3, "SETTING THE TAIL!!"));
+console.log(list);
+console.log(list.set(10, "WON'T WORK!!"));
+console.log(list);
