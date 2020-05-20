@@ -111,7 +111,6 @@ class DoublyLinkedList {
 
   insert(index, val) {
     if (index < 0 || index > this.length) return false;
-
     if (index === 0) return !!this.unshift(val);
     if (index === this.length) return !!this.push(val);
 
@@ -127,6 +126,22 @@ class DoublyLinkedList {
     this.length++;
 
     return true;
+  }
+
+  remove(index) {
+    if (index < 0 || index >= this.length) return undefined;
+    if (index === 0) return this.shift();
+    if (index === this.length - 1) return this.pop();
+
+    let removedNode = this.get(index);
+    let prevNode = removedNode.prev,
+      nextNode = removedNode.next;
+    (removedNode.prev = null), (removedNode.next = null);
+    (prevNode.next = nextNode), (nextNode.prev = prevNode);
+
+    this.length--;
+
+    return removedNode;
   }
 }
 
@@ -206,3 +221,23 @@ console.log(list);
 console.log(list.insert(2, "INSERT IN MIDDLE"));
 console.log(list);
 console.log(list.get(2));
+
+console.log();
+console.log("========");
+console.log("Remove node at index");
+console.log("--------");
+console.log(list.remove(0));
+console.log(list);
+console.log("--------");
+console.log(list.remove(5));
+console.log(list);
+console.log("--------");
+console.log(list.remove(10));
+console.log(list);
+console.log("--------");
+console.log(list.get(2));
+console.log(list.remove(2));
+console.log(list);
+console.log(list.get(1));
+console.log(list.get(2));
+console.log("--------");
