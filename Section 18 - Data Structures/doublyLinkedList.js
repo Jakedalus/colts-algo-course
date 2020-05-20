@@ -108,6 +108,26 @@ class DoublyLinkedList {
 
     return false;
   }
+
+  insert(index, val) {
+    if (index < 0 || index > this.length) return false;
+
+    if (index === 0) return !!this.unshift(val);
+    if (index === this.length) return !!this.push(val);
+
+    let newNode = new Node(val);
+    let prevNode = this.get(index - 1);
+    let nextNode = prevNode.next;
+
+    nextNode.prev = newNode;
+    newNode.next = nextNode;
+    prevNode.next = newNode;
+    newNode.prev = prevNode;
+
+    this.length++;
+
+    return true;
+  }
 }
 
 console.log("========");
@@ -172,3 +192,17 @@ console.log(list.set(3, "SETTING THE TAIL!!"));
 console.log(list);
 console.log(list.set(10, "WON'T WORK!!"));
 console.log(list);
+
+console.log();
+console.log("========");
+console.log("Insert node at index");
+console.log("--------");
+console.log(list.insert(0, "INSERT NEW HEAD!!"));
+console.log(list);
+console.log(list.insert(5, "INSERT NEW TAIL!!"));
+console.log(list);
+console.log(list.insert(10, "WON'T WORK!!"));
+console.log(list);
+console.log(list.insert(2, "INSERT IN MIDDLE"));
+console.log(list);
+console.log(list.get(2));
