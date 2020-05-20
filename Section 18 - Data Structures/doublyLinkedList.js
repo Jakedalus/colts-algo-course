@@ -45,6 +45,23 @@ class DoublyLinkedList {
 
     return oldTail;
   }
+
+  shift() {
+    if (!this.head) return undefined;
+
+    let oldHead = this.head;
+    if (this.length === 1) {
+      this.head = null;
+      this.tail = null;
+    } else {
+      this.head = oldHead.next;
+      this.head.prev = null;
+      oldHead.next = null;
+    }
+    this.length--;
+
+    return oldHead;
+  }
 }
 
 console.log("========");
@@ -71,4 +88,11 @@ console.log("========");
 console.log("Pop nodes off list");
 console.log("--------");
 console.log(list.pop());
+console.log(list);
+
+console.log();
+console.log("========");
+console.log("Shift nodes off list");
+console.log("--------");
+console.log(list.shift());
 console.log(list);
