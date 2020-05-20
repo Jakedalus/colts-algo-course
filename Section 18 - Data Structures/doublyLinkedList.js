@@ -78,6 +78,25 @@ class DoublyLinkedList {
 
     return this;
   }
+
+  get(index) {
+    if (index < 0 || index >= this.length) return null;
+
+    let current;
+
+    if (index <= this.length / 2) {
+      current = this.head;
+      for (let i = 0; i < index; i++) {
+        current = current.next;
+      }
+    } else {
+      current = this.tail;
+      for (let i = this.length - 1; i > index; i--) {
+        current = current.prev;
+      }
+    }
+    return current;
+  }
 }
 
 console.log("========");
@@ -119,3 +138,15 @@ console.log("Unshift nodes onto list");
 console.log("--------");
 console.log(list.unshift("unshfited node"));
 console.log(list.unshift("unshfited node #two"));
+
+console.log();
+console.log("========");
+console.log("Get node at index");
+console.log("--------");
+console.log(list.get(-10));
+console.log(list.get(0));
+console.log(list.get(1));
+console.log(list.get(2));
+console.log(list.get(3));
+console.log(list.get(4));
+console.log(list.get(100));
