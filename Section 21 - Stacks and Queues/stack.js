@@ -24,15 +24,28 @@ class Stack {
             this.first.next = tempNode;
         }
 
-        this.size++;
+        return ++this.size;
+    } 
 
-        return this;
+    pop() {
+
+    }
+
+    print() {
+        let arr = [];
+        let current = this.first;
+        while (current) {
+            arr.push(current.val);
+            current = current.next;
+        }
+
+        console.log(arr);
     }
 }
 
 
 const stack = new Stack();
 
-stack.push('first!!');
-stack.push("now I'M first!");
+console.log(stack.push('first!!'));
+console.log(stack.push("now I'M first!"));
 console.log(stack);
