@@ -28,14 +28,22 @@ class Stack {
     } 
 
     pop() {
+        if (this.size === 0) return null;
+        const temp = this.first;
+        if (this.size === 1) {
+            this.last = null;
+        } 
+        this.first = temp.next;
+        this.size--;
 
+        return temp.value;
     }
 
     print() {
         let arr = [];
         let current = this.first;
         while (current) {
-            arr.push(current.val);
+            arr.push(current.value);
             current = current.next;
         }
 
@@ -46,6 +54,21 @@ class Stack {
 
 const stack = new Stack();
 
+console.log("========");
+console.log("Push onto stack");
+console.log("--------");
 console.log(stack.push('first!!'));
 console.log(stack.push("now I'M first!"));
 console.log(stack);
+console.log(stack.push("THE NEWEST FIRST"));
+console.log(stack);
+console.log(stack.print());
+
+console.log();
+console.log("========");
+console.log("Pop off stack");
+console.log("--------");
+console.log(stack.pop());
+console.log(stack, stack.print());
+console.log(stack.pop());
+console.log(stack, stack.print());
