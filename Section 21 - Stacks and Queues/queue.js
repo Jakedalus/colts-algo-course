@@ -29,14 +29,12 @@ class Queue {
         if (this.size === 0) return null;
         const temp = this.first;
         if (this.size === 1) {
-            this.first = null;
             this.last = null;
-        } else {
-            this.first = temp.next;
-        }
+        } 
+        this.first = temp.next;
         this.size--;
 
-        return temp;
+        return temp.value;
     }
 }
 
