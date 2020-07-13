@@ -36,5 +36,20 @@ function dfsPostOrder(tree) {
   return visited;
 }
 
+function dfsInOrder(tree) {
+  const visited = [];
+
+  function traverse(node) {
+    if (node.left) traverse(node.left);
+    visited.push(node.value);
+    if (node.right) traverse(node.right);
+  }
+
+  traverse(tree.root);
+
+  return visited;
+}
+
 console.log(dfsPreOrder(bst));
 console.log(dfsPostOrder(bst));
+console.log(dfsInOrder(bst));
