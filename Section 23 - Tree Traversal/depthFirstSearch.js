@@ -8,7 +8,7 @@ bst.insert(3);
 bst.insert(8);
 bst.insert(20);
 
-function dfs(tree) {
+function dfsPreOrder(tree) {
   const visited = [];
 
   function traverse(node) {
@@ -22,4 +22,4 @@ function dfs(tree) {
   return visited;
 }
 
-console.log(dfs(bst));
+console.log(dfsPreOrder(bst));
