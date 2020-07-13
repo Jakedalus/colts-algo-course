@@ -22,4 +22,19 @@ function dfsPreOrder(tree) {
   return visited;
 }
 
+function dfsPostOrder(tree) {
+  const visited = [];
+
+  function traverse(node) {
+    if (node.left) traverse(node.left);
+    if (node.right) traverse(node.right);
+    visited.push(node.value);
+  }
+
+  traverse(tree.root);
+
+  return visited;
+}
+
 console.log(dfsPreOrder(bst));
+console.log(dfsPostOrder(bst));
