@@ -2,13 +2,16 @@ var BST = require("../Section 22 - BSTs/binarySearchTree");
 
 const bst = new BST();
 bst.insert(10);
-bst.insert(7);
+// bst.insert(7);
 bst.insert(6);
 bst.insert(15);
-bst.insert(19);
-bst.insert(17);
-bst.insert(16);
-bst.insert(10);
+bst.insert(3);
+bst.insert(8);
+bst.insert(20);
+// bst.insert(19);
+// bst.insert(17);
+// bst.insert(16);
+// bst.insert(10);
 
 console.log(bst);
 
@@ -21,8 +24,8 @@ function bfs(tree) {
   while (queue.length !== 0) {
     const current = queue.shift();
     visited.push(current.value);
-    if (current.left !== null) queue.push(current.left);
-    if (current.right !== null) queue.push(current.right);
+    if (current.left) queue.push(current.left);
+    if (current.right) queue.push(current.right);
   }
 
   return visited;
