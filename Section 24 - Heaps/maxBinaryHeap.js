@@ -36,7 +36,7 @@ class MaxBinaryHeap {
     // console.log(temp, parentIndex, largestChildIndex, this.values);
 
     while (this.values[parentIndex] < this.values[largestChildIndex]) {
-      console.log(temp, parentIndex, largestChildIndex, this.values);
+      // console.log(temp, parentIndex, largestChildIndex, this.values);
       temp = this.values[parentIndex];
       this.values[parentIndex] = this.values[largestChildIndex];
       this.values[largestChildIndex] = temp;
@@ -62,5 +62,11 @@ console.log(heap.insert(50));
 console.log(heap.insert(350));
 
 console.log("-------");
+console.log(heap.extractMax());
+console.log(heap.extractMax());
+console.log(heap.extractMax());
+console.log(heap.extractMax());
+console.log(heap.extractMax());
+console.log(heap.extractMax());
 console.log(heap.extractMax());
 console.log(heap);
