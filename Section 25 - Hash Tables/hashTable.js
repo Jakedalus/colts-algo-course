@@ -1,5 +1,5 @@
 class HashTable {
-	constructor(size = 3) {
+	constructor(size = 53) {
 		this.keyMap = new Array(size);
 	}
 
@@ -43,15 +43,21 @@ class HashTable {
 		const index = this._hash(key);
 		const list = this.keyMap[index];
 
-		const found = list.filter(pair => pair[0] === key);
+		console.log(index, list);
 
-		if (found.length === 0) return undefined;
+		if (list) {
+			for (let i = 0; i < list.length; i++) {
+				if (list[i][0] === key) {
+					return list[i][1];
+				}
+			}
+		}
 
-		return found;
+		return undefined;
 	}
 }
 
-const ht = new HashTable();
+const ht = new HashTable(17);
 ht.set('jake', ' is super cool!');
 ht.set('bob', 9823094823);
 ht.set('francis', ' sucks!!!');
@@ -60,6 +66,9 @@ ht.set('BOB', ' scares me');
 ht.set('10918209', ' 09183409183');
 console.log(ht);
 console.log(ht.keyMap);
+console.log('----- GET ------');
 console.log(ht.get('jake'));
 console.log(ht.get('Jake'));
 console.log(ht.get('BOB'));
+console.log(ht.get('Bsbsb'));
+console.log(ht.get('BOb'));
