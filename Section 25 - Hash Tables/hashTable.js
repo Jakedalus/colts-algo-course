@@ -60,8 +60,6 @@ class HashTable {
 		return this.keyMap.reduce((entries, current) => {
 			// console.log('entries:', entries, 'current:', current);
 			if (current) {
-				// const currentEntries = current.map(pair => pair[0]);
-				// console.log('currentEntries:', currentEntries);
 				return entries.concat(current);
 			}
 		}, []);
