@@ -55,6 +55,28 @@ class HashTable {
 
 		return undefined;
 	}
+
+	keys() {
+		return this.keyMap.reduce((keys, current) => {
+			// console.log('keys:', keys, 'current:', current);
+			if (current) {
+				const currentKeys = current.map(pair => pair[0]);
+				// console.log('currentKeys:', currentKeys);
+				return keys.concat(currentKeys);
+			}
+		}, []);
+	}
+
+	values() {
+		return this.keyMap.reduce((values, current) => {
+			// console.log('values:', values, 'current:', current);
+			if (current) {
+				const currentValues = current.map(pair => pair[1]);
+				// console.log('currentValues:', currentValues);
+				return values.concat(currentValues);
+			}
+		}, []);
+	}
 }
 
 const ht = new HashTable(17);
@@ -72,3 +94,7 @@ console.log(ht.get('Jake'));
 console.log(ht.get('BOB'));
 console.log(ht.get('Bsbsb'));
 console.log(ht.get('BOb'));
+console.log('----- KEYS ------');
+console.log(ht.keys());
+console.log('----- VALUES ------');
+console.log(ht.values());
