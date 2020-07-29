@@ -68,14 +68,20 @@ class HashTable {
 	}
 
 	values() {
-		return this.keyMap.reduce((values, current) => {
-			// console.log('values:', values, 'current:', current);
-			if (current) {
-				const currentValues = current.map(pair => pair[1]);
-				// console.log('currentValues:', currentValues);
-				return values.concat(currentValues);
-			}
-		}, []);
+		return Array.from(
+			new Set(
+				this.keyMap.reduce((values, current) => {
+					// console.log('values:', values, 'current:', current);
+					if (current) {
+						const currentValues = current.map(
+							pair => pair[1]
+						);
+						// console.log('currentValues:', currentValues);
+						return values.concat(currentValues);
+					}
+				}, [])
+			)
+		);
 	}
 }
 
