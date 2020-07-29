@@ -96,6 +96,7 @@ class HashTable {
 
 const ht = new HashTable(17);
 ht.set('jake', ' is super cool!');
+ht.set('jake', ' sucks ass!!!');
 ht.set('jake2', ' is super cool!');
 ht.set('bob', 9823094823);
 ht.set('francis', ' sucks!!!');
