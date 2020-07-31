@@ -36,10 +36,13 @@ class Graph {
 
 	removeVertex(vertex) {
 		if (this.adjacencyList[vertex]) {
-			this.adjacencyList[vertex].forEach(v => {
-				this.removeEdge(vertex, v);
-			});
+			while (this.adjacencyList[vertex].length) {
+				let adjacent = this.adjacencyList[vertex].pop();
+				this.removeEdge(vertex, adjacent);
+			}
 		}
+
+		console.log(this.adjacencyList[vertex]);
 
 		delete this.adjacencyList[vertex];
 	}
