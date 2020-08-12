@@ -134,16 +134,16 @@ module.exports = { Graph, WeightedGraph };
 // g.removeVertex('Tokyo');
 // console.log(g); // Should remove all edges also
 
-const wg = new WeightedGraph();
+// const wg = new WeightedGraph();
 
-wg.addVertex('A');
-wg.addVertex('B');
-wg.addVertex('C');
-wg.addEdge('A', 'B', 9);
-wg.addEdge('A', 'C', 5);
-wg.addEdge('B', 'C', 7);
-console.log(wg.adjacencyList);
-wg.removeEdge('A', 'C');
-console.log(wg.adjacencyList);
-wg.removeVertex('A');
-console.log(wg.adjacencyList);
+// wg.addVertex('A');
+// wg.addVertex('B');
+// wg.addVertex('C');
+// wg.addEdge('A', 'B', 9);
+// wg.addEdge('A', 'C', 5);
+// wg.addEdge('B', 'C', 7);
+// console.log(wg.adjacencyList);
+// wg.removeEdge('A', 'C');
+// console.log(wg.adjacencyList);
+// wg.removeVertex('A');
+// console.log(wg.adjacencyList);

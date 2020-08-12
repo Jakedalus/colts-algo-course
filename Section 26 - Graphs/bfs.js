@@ -1,4 +1,4 @@
-const Graph = require('./graph');
+const { Graph } = require('./graph');
 const Queue = require('../Section 21 - Stacks and Queues/queue');
 
 const g = new Graph();
