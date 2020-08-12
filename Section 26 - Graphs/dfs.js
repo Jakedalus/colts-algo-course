@@ -24,13 +24,13 @@ function dfsRecursive(graph, start) {
 	const visited = {};
 
 	(function dfs(vertex) {
-		if (!vertex) return;
+		// if (!vertex) return;
 
 		visited[vertex] = true;
 		results.push(vertex);
 
 		graph.adjacencyList[vertex].forEach(v => {
-			if (!visited[v]) return dfs(v);
+			if (!visited[v]) dfs(v);
 		});
 	})(start);
 
