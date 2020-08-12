@@ -48,7 +48,63 @@ class Graph {
 	}
 }
 
-module.exports = Graph;
+class WeightedGraph {
+	// undirected, WEIGHTED graph
+	constructor() {
+		this.adjacencyList = {};
+	}
+
+	addVertex(vertex) {
+		if (!this.adjacencyList[vertex]) {
+			this.adjacencyList[vertex] = [];
+		}
+	}
+
+	addEdge(vertex1, vertex2, weight) {
+		if (
+			this.adjacencyList[vertex1] &&
+			this.adjacencyList[vertex2]
+		) {
+			this.adjacencyList[vertex1].push({
+				node   : vertex2,
+				weight
+			});
+			this.adjacencyList[vertex2].push({
+				node   : vertex1,
+				weight
+			});
+		}
+	}
+
+	removeEdge(vertex1, vertex2) {
+		if (
+			this.adjacencyList[vertex1] &&
+			this.adjacencyList[vertex2]
+		) {
+			this.adjacencyList[vertex1] = this.adjacencyList[
+				vertex1
+			].filter(v => v.node !== vertex2);
+			this.adjacencyList[vertex2] = this.adjacencyList[
+				vertex2
+			].filter(v => v.node !== vertex1);
+		}
+	}
+
+	removeVertex(vertex) {
+		if (this.adjacencyList[vertex]) {
+			while (this.adjacencyList[vertex].length) {
+				let adjacent = this.adjacencyList[vertex].pop();
+				this.removeEdge(vertex, adjacent.node);
+			}
+		}
+
+		console.log(this.adjacencyList[vertex]);
+
+		delete this.adjacencyList[vertex];
+	}
+}
+
+module.exports = { Graph, WeightedGraph };
 
 // const g = new Graph();
 
@@ -77,3 +133,17 @@ module.exports = Graph;
 // console.log(g);
 // g.removeVertex('Tokyo');
 // console.log(g); // Should remove all edges also
+
+const wg = new WeightedGraph();
+
+wg.addVertex('A');
+wg.addVertex('B');
+wg.addVertex('C');
+wg.addEdge('A', 'B', 9);
+wg.addEdge('A', 'C', 5);
+wg.addEdge('B', 'C', 7);
+console.log(wg.adjacencyList);
+wg.removeEdge('A', 'C');
+console.log(wg.adjacencyList);
+wg.removeVertex('A');
+console.log(wg.adjacencyList);
