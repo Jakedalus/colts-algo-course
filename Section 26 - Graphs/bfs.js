@@ -25,6 +25,7 @@ function bfs(graph, start) {
 	let currentVertex;
 
 	queue.enqueue(start);
+	visited[start] = true;
 
 	while (queue.size) {
 		// console.log(queue);
