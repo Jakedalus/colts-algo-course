@@ -7,6 +7,7 @@ g.addVertex('B');
 g.addVertex('C');
 g.addVertex('D');
 g.addVertex('E');
+g.addVertex('F');
 
 g.addEdge('A', 'B');
 g.addEdge('A', 'C');
@@ -18,4 +19,24 @@ g.addEdge('E', 'F');
 
 console.log('Graph:', g);
 
-function dfsRecursive(vertex) {}
+function dfsRecursive(graph, start) {
+	const results = [];
+	const visited = {};
+
+	(function dfs(vertex) {
+		if (!vertex) return;
+
+		visited[vertex] = true;
+		results.push(vertex);
+
+		graph.adjacencyList[vertex].forEach(v => {
+			if (!visited[v]) return dfs(v);
+		});
+	})(start);
+
+	console.log('Visited:', visited);
+
+	return results;
+}
+
+console.log(dfsRecursive(g, 'A'));
