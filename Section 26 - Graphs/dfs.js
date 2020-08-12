@@ -19,6 +19,8 @@ g.addEdge('E', 'F');
 
 console.log('Graph:', g);
 
+console.log('--- Recursive ---');
+
 function dfsRecursive(graph, start) {
 	const results = [];
 	const visited = {};
@@ -40,3 +42,31 @@ function dfsRecursive(graph, start) {
 }
 
 console.log(dfsRecursive(g, 'A'));
+
+console.log('--- Iterative ---');
+
+function dfsIterative(graph, start) {
+	const stack = [ start ];
+	const results = [];
+	const visited = {};
+	let currentVertex;
+
+	while (stack.length) {
+		// console.log(stack);
+		currentVertex = stack.pop();
+		if (!visited[currentVertex]) {
+			visited[currentVertex] = true;
+			results.push(currentVertex);
+			// graph.adjacencyList[currentVertex].forEach(v =>
+			// 	stack.push(v)
+			// );
+			stack.push(...graph.adjacencyList[currentVertex]);
+		}
+	}
+
+	console.log('Visited:', visited);
+
+	return results;
+}
+
+console.log(dfsIterative(g, 'A'));
