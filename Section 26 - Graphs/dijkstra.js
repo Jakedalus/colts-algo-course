@@ -5,101 +5,94 @@ function dijkstra(graph, start, end) {
 	const distances = {};
 	const queue = new PriorityQueue();
 	const previous = {};
+	const path = [];
+	let smallest;
 
-	distances[start] = 0;
-	queue.enqueue(start, 0);
+	// distances[start] = 0;
+	// queue.enqueue(start, 0);
+	// const vertices = Object.keys(graph.adjacencyList);
+	// for (let i = 1; i < vertices.length; i++) {
+	// 	let vertex = vertices[i];
+	// 	distances[vertex] = Infinity;
+	// 	queue.enqueue(vertex, Infinity);
+	// 	previous[vertex] = null;
+	// }
 
-	const vertices = Object.keys(graph.adjacencyList);
-
-	for (let i = 1; i < vertices.length; i++) {
-		let vertex = vertices[i];
-		distances[vertex] = Infinity;
-		queue.enqueue(vertex, Infinity);
+	for (let vertex in graph.adjacencyList) {
+		if (vertex === start) {
+			distances[start] = 0;
+			queue.enqueue(start, 0);
+		} else {
+			distances[vertex] = Infinity;
+			queue.enqueue(vertex, Infinity);
+		}
 		previous[vertex] = null;
 	}
 
-	console.log('====');
+	console.log('==== Initial State ====');
 	console.log(distances, queue, previous);
-	console.log('====');
+	console.log('============');
 
 	while (queue.values.length) {
-		let currentVertex = queue.dequeue().val;
-		if (currentVertex === end)
-			return { previous, distances };
+		smallest = queue.dequeue().val;
+		if (smallest === end) {
+			console.log('--> PATH:', previous, distances);
+			while (previous[smallest]) {
+				path.unshift(smallest);
+				smallest = previous[smallest];
+			}
+			path.unshift(start);
+			break;
+		}
 
 		console.log('************');
-		console.log('currentVertex:', currentVertex);
+		console.log('smallest:', smallest);
 		console.log('************');
 
 		console.log(
 			'adjacencyList:',
-			graph.adjacencyList[currentVertex]
+			graph.adjacencyList[smallest]
 		);
 
-		for (let adjacent of graph.adjacencyList[
-			currentVertex
-		]) {
+		for (let adjacent of graph.adjacencyList[smallest]) {
 			console.log('--- Adjacent ---', adjacent);
-			let prev = currentVertex;
-			console.log('prev:', prev);
-			let distance = adjacent.weight;
-			while (prev) {
-				distance += distances[prev];
-				prev = previous[prev];
-			}
-			console.log('distance:', distance);
-			console.log(
-				'distances[adjacent.node]:',
-				distances[adjacent.node]
-			);
-			if (distance < distances[adjacent.node]) {
+			let candidate = distances[smallest] + adjacent.weight;
+
+			if (candidate < distances[adjacent.node]) {
 				console.log('...updating!', adjacent.node);
-				distances[adjacent.node] = distance;
-				previous[adjacent.node] = currentVertex;
-				queue.enqueue(adjacent.node, distance);
+				distances[adjacent.node] = candidate;
+				previous[adjacent.node] = smallest;
+				queue.enqueue(adjacent.node, candidate);
 			}
+
+			//////////
+			// let prev = smallest;
+			// console.log('prev:', prev);
+			// let distance = adjacent.weight;
+			// while (prev) {
+			// 	distance += distances[prev];
+			// 	prev = previous[prev];
+			// }
+			// console.log('distance:', distance);
+			// console.log(
+			// 	'distances[adjacent.node]:',
+			// 	distances[adjacent.node]
+			// );
+			/////////
+			// if (distance < distances[adjacent.node]) {
+			// 	console.log('...updating!', adjacent.node);
+			// 	distances[adjacent.node] = distance;
+			// 	previous[adjacent.node] = smallest;
+			// 	queue.enqueue(adjacent.node, distance);
+			// }
+			/////////
 		}
 
 		console.log('====');
 		console.log(distances, queue, previous);
 		console.log('====');
-
-		// currentVertex = queue.dequeue().val;
-		// if (currentVertex === end) return { previous, distances };
-
-		// console.log('currentVertex:', currentVertex);
-
-		// console.log(
-		// 	'adjacencyList:',
-		// 	graph.adjacencyList[currentVertex]
-		// );
-
-		// for (let adjacent of graph.adjacencyList[currentVertex]) {
-		// 	let prev = previous[currentVertex];
-		// 	console.log('--- Adjacent ---', adjacent);
-		// 	console.log('prev:', prev);
-		// 	let distance = adjacent.weight;
-		// 	while (prev) {
-		// 		distance += distances[prev];
-		// 		prev = previous[prev];
-		// 	}
-		// 	console.log('distance:', distance);
-		// 	console.log(
-		// 		'distances[currentVertex]:',
-		// 		distances[currentVertex]
-		// 	);
-		// 	if (distance < distances[currentVertex]) {
-		// 		console.log('...updating!', adjacent.node);
-		// 		distances[adjacent.node] = distance;
-		// 		previous[adjacent.node] = currentVertex;
-		// 		queue.enqueue(adjacent.node, distance);
-		// 	}
-		// }
-
-		// console.log('====');
-		// console.log(distances, queue, previous);
-		// console.log('====');
 	}
+	return path;
 }
 
 const wg = new WeightedGraph();
@@ -119,7 +112,17 @@ wg.addEdge('D', 'E', 3);
 wg.addEdge('D', 'F', 1);
 wg.addEdge('E', 'F', 1);
 
+console.log(
+	'======================================================'
+);
+console.log(
+	'======================================================'
+);
 console.log('wg:', wg.adjacencyList);
-console.log('=========');
+console.log(
+	'======================================================'
+);
 
 console.log(dijkstra(wg, 'A', 'E'));
+// console.log(dijkstra(wg, 'A', 'C'));
+// console.log(dijkstra(wg, 'A', 'F'));
