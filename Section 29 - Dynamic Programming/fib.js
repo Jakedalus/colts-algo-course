@@ -28,7 +28,7 @@ function dynaProFib(n, memo = {}) {
 	return (memo[n] =
 		dynaProFib(n - 1, memo) + dynaProFib(n - 2, memo));
 }
-console.log('---- DYNAMIC ----');
+console.log('---- MEMOIZATION ----');
 // console.log('dynaProFib(3)', dynaProFib(3));
 // console.log('dynaProFib(5)', dynaProFib(5));
 // console.log('dynaProFib(7)', dynaProFib(7));
@@ -42,3 +42,17 @@ console.log('---- DYNAMIC ----');
 console.log('dynaProFib(42)', dynaProFib(42));
 console.log('dynaProFib(42)', dynaProFib(92));
 console.log('dynaProFib(42)', dynaProFib(920));
+
+function tabFib(n) {
+	const fibNums = [ 0, 1, 1 ];
+	for (let i = 3; i <= n; i++) {
+		fibNums[i] = fibNums[i - 1] + fibNums[i - 2];
+	}
+
+	return fibNums[n];
+}
+
+console.log('---- TABULATION ----');
+console.log('tabFib(42)', tabFib(42));
+console.log('tabFib(42)', tabFib(92));
+console.log('tabFib(42)', tabFib(920));
